@@ -1133,11 +1133,15 @@ function sendGCode(gcode, fromInput) {
 	if (gcode == "") {
 		return;
 	}
+    if (settings.uppercaseGCode) {
+        gcode = gcode.toUpperCase();
+    }
+
 	lastSentGCode = gcode;
 
 	// Although rr_gcode gives us a JSON response, it doesn't provide any useful values for DWC.
 	// We only need to worry about an AJAX error event, which is handled by the global AJAX error callback.
-	$.ajax(ajaxPrefix + "rr_gcode?gcode=" + encodeURIComponent(gcode), {
+    $.ajax(ajaxPrefix + "rr_gcode?gcode=" + encodeURIComponent(gcode), {
 		dataType: "json"
 	});
 }
