@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--	Duet Web Control v1.15a
 
 	written by Christian Hammacher
@@ -566,10 +566,12 @@
 														<a href="#" role="button" data-x="-10" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> X-10</a>
 														<a href="#" role="button" data-x="-1" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> X-1</a>
 														<a href="#" role="button" data-x="-0.1" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> X-0.1</a>
+													    <a href="#" role="button" data-x="-0.01" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> X-0.01</a>
 													</div>
 												</td>
 												<td>
 													<div class="btn-group btn-group-justified" role="group">
+													    <a href="#" role="button" data-x="0.01" class="btn btn-default disabled">X+0.01 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-x="0.1" class="btn btn-default disabled">X+0.1 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-x="1" class="btn btn-default disabled">X+1 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-x="10" class="btn btn-default disabled">X+10 <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -589,10 +591,12 @@
 														<a role="button" data-y="-10" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> Y-10</a>
 														<a role="button" data-y="-1" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> Y-1</a>
 														<a role="button" data-y="-0.1" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> Y-0.1</a>
+													    <a role="button" data-y="-0.01" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> Y-0.01</a>
 													</div>
 												</td>
 												<td>
 													<div class="btn-group btn-group-justified" role="group">
+													    <a href="#" role="button" data-y="0.01" class="btn btn-default disabled">Y+0.01 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-y="0.1" class="btn btn-default disabled">Y+0.1 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-y="1" class="btn btn-default disabled">Y+1 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-y="10" class="btn btn-default disabled">Y+10 <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -612,10 +616,12 @@
 														<a role="button" data-z="-10" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> Z-10</a>
 														<a role="button" data-z="-1" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> Z-1</a>
 														<a role="button" data-z="-0.1" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> Z-0.1</a>
+													    <a role="button" data-z="-0.01" class="btn btn-default disabled"><span class="glyphicon glyphicon-chevron-left"></span> Z-0.01</a>
 													</div>
 												</td>
 												<td id="td_increase_z">
 													<div class="btn-group btn-group-justified" role="group">
+													    <a href="#" role="button" data-z="0.01" class="btn btn-default disabled">Z+0.01 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-z="0.1" class="btn btn-default disabled">Z+0.1 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-z="1" class="btn btn-default disabled">Z+1 <span class="glyphicon glyphicon-chevron-right"></span></a>
 														<a href="#" role="button" data-z="10" class="btn btn-default disabled">Z+10 <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -1585,6 +1591,7 @@
 										</div>
 									</div>
 
+                                    <!-- Fan I/O for possible light ring control implementation -->
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 										<div class="panel panel-default">
 											<div class="panel-heading">
@@ -1596,25 +1603,61 @@
 												<div class="row" id="div_fan_settings">
 													<div class="col-xs-12 col-sm-6 col-md-4">
 														<div class="checkbox">
-															<label title="Show fan slider for this fan to utilize M106. This setting may be overridden if the firmware reports fewer fan values">
+															<label title="Show fan/light control to utilize M106. This setting may be overridden if the firmware reports fewer fan values">
 																<input type="checkbox" data-setting="showFan1" checked /> Fan 1
 															</label>
 														</div>
 													</div>
+                                                    <div class="col-xs-12 col-sm-6 col-md-4">
+                                                        <div class="radio">
+                                                            <label title="Show fan 1 slider instead of light 2 switch">
+                                                                <input type="radio" name="fanLight1" data-setting="toggleFanLight1" value="fan" checked="checked" /> Fan 1
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label title="Show light 1 switch instead of fan 2 slider">
+                                                                <input type="radio" name="fanLight1" data-setting="toggleFanLight1" value="light" checked /> Light 1
+                                                            </label>
+                                                        </div>
+                                                    </div>
 													<div class="col-xs-12 col-sm-6 col-md-4">
 														<div class="checkbox">
-															<label title="Show fan slider for this fan to utilize M106. This setting may be overridden if the firmware reports fewer fan values">
+															<label title="Show fan/light control to utilize M106. This setting may be overridden if the firmware reports fewer fan values">
 																<input type="checkbox" data-setting="showFan2" checked /> Fan 2
 															</label>
 														</div>
 													</div>
+                                                    <div class="col-xs-12 col-sm-6 col-md-4">
+                                                        <div class="radio">
+                                                            <label title="Show fan 2 slider instead of light 2 switch">
+                                                                <input type="radio" name="fanLight2" data-setting="toggleFanLight2" value="fan" checked="checked" /> Fan 2
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label title="Show light 2 switch instead of fan 2 slider">
+                                                                <input type="radio" name="fanLight2" data-setting="toggleFanLight2" value="light" checked /> Light 2
+                                                            </label>
+                                                        </div>
+                                                    </div>
 													<div class="col-xs-12 col-sm-12 col-md-4">
 														<div class="checkbox">
-															<label title="Show fan slider for this fan to utilize M106. This setting may be overridden if the firmware reports fewer fan values">
+															<label title="Show fan/light control to utilize M106. This setting may be overridden if the firmware reports fewer fan values">
 																<input type="checkbox" data-setting="showFan3" checked /> Fan 3
 															</label>
 														</div>
 													</div>
+                                                    <div class="col-xs-12 col-sm-6 col-md-4">
+                                                        <div class="radio">
+                                                            <label title="Show fan 3 slider instead of light 3 switch">
+                                                                <input type="radio" name="fanLight2" data-setting="toggleFanLight3" value="fan" checked="checked" /> Fan 3
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label title="Show light 3 switch instead of fan 3 slider">
+                                                                <input type="radio" name="fanLight2" data-setting="toggleFanLight3" value="light" checked /> Light 3
+                                                            </label>
+                                                        </div>
+                                                    </div>
 												</div>
 
 												<div class="checkbox">
@@ -2375,27 +2418,27 @@
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="js/3rd-party/jquery-3.1.0.min.js"></script>
-		<script src="js/3rd-party/jquery.flot.min.js"></script>
-		<script src="js/3rd-party/jquery.flot.resize.min.js"></script>
-		<script src="js/3rd-party/jquery.flot.navigate.min.js"></script>
-		<script src="js/3rd-party/bootstrap.min.js"></script>
-		<script src="js/3rd-party/bootstrap-notify.min.js"></script>
-		<script src="js/3rd-party/bootstrap-slider.min.js"></script>
-		<script src="js/3rd-party/jszip.min.js"></script>
-		<script src="js/3rd-party/three.min.js"></script>
-		<script src="js/3rd-party/three.orbit.min.js"></script>
-		<script src="js/charts.js"></script>
-		<script src="js/comm.js"></script>
-		<script src="js/files.js"></script>
-		<script src="js/i18n.js"></script>
-		<script src="js/interface.js"></script>
-		<script src="js/modals.js"></script>
-		<script src="js/notify.js"></script>
-		<script src="js/settings.js"></script>
-		<script src="js/sliders.js"></script>
-		<script src="js/upload.js"></script>
-		<script src="js/utils.js"></script>
-		<script src="js/3d.js"></script>
+		<script type="text/javascript" src="js/3rd-party/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/jquery.flot.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/jquery.flot.resize.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/jquery.flot.navigate.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/bootstrap-notify.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/bootstrap-slider.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/jszip.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/three.min.js"></script>
+		<script type="text/javascript" src="js/3rd-party/three.orbit.min.js"></script>
+		<script type="text/javascript" src="js/charts.js"></script>
+		<script type="text/javascript" src="js/comm.js"></script>
+		<script type="text/javascript" src="js/files.js"></script>
+		<script type="text/javascript" src="js/i18n.js"></script>
+		<script type="text/javascript" src="js/interface.js"></script>
+		<script type="text/javascript" src="js/modals.js"></script>
+		<script type="text/javascript" src="js/notify.js"></script>
+		<script type="text/javascript" src="js/settings.js"></script>
+		<script type="text/javascript" src="js/sliders.js"></script>
+		<script type="text/javascript" src="js/upload.js"></script>
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/3d.js"></script>
 	</body>
 </html>

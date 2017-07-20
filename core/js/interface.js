@@ -30,7 +30,7 @@ function resetGuiData() {
 	setBoardType("unknown");
 	setPauseStatus(false);
 	setPrintStatus(false);
-	setGeometry("cartesian");
+	setGeometry("delta");
 
 	justConnected = isUploading = updateTaskLive = false;
 	resetConfirmationShown = false;

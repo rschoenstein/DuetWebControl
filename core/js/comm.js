@@ -1000,11 +1000,15 @@ function getConfigResponse() {
 
 // Send G-Code directly to the firmware
 function sendGCode(gcode, fromInput) {
+    if (settings.uppercaseGCode) {
+        gcode = gcode.toUpperCase();
+    }
+
 	lastSentGCode = gcode;
 
 	// Although rr_gcode gives us a JSON response, it doesn't provide any results.
 	// We only need to worry about an AJAX error event.
-	$.ajax(ajaxPrefix + "rr_gcode?gcode=" + encodeURIComponent(gcode), {
+    $.ajax(ajaxPrefix + "rr_gcode?gcode=" + encodeURIComponent(gcode), {
 		dataType: "json"
 	});
 }

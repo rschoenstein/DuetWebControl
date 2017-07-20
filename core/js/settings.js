@@ -1,4 +1,4 @@
-/* Settings management for Duet Web Control
+﻿/* Settings management for Duet Web Control
  * 
  * written by Christian Hammacher (c) 2016
  * 
@@ -49,14 +49,16 @@ var settings = {
 	webcamInterval: 5000,			// in ms
 	webcamFix: false,				// do not append extra HTTP qualifier when reloading images
 
-	defaultActiveTemps: [0, 180, 190, 200, 210, 220, 235],
-	defaultStandbyTemps: [0, 95, 120, 140, 155, 170],
-	defaultBedTemps: [0, 55, 60, 65, 90, 110, 120],
+	defaultActiveTemps: [0, 180, 190, 200, 210, 220, 230, 235, 240, 245, 250, 260, 270, 280, 290],
+	defaultStandbyTemps: [0, 95, 120, 140, 155, 170, 190, 200, 210],
+	defaultBedTemps: [0, 40, 45, 50, 55, 60, 65, 80, 90],
 	defaultGCodes: [
 		["M0", "Stop"],
 		["M1", "Sleep"],
 		["M84", "Motors Off"],
-		["M561", "Disable bed compensation"]
+        ["M561", "Disable bed compensation"],
+        ["M665", "Calibrated radius, height, offsets"],
+	    ["M666", "Calibrated endstop adjustments"]
 	]
 };
 
@@ -142,9 +144,11 @@ function applySettings() {
 	decreaseChildren.each(function(index) {
 		decreaseChildren.eq(index).data("z", decreaseVal * (-1)).contents().last().replaceWith(" Z-" + decreaseVal);
 		decreaseVal /= 10;
-	});
-	var increaseChildren = $("#td_increase_z a");
-	var increaseVal = (settings.halfZMovements) ? 0.05 : 0.1;
+    });
+
+    var increaseChildren = $("#td_increase_z a");
+    //NOTE: Since I added Z+0.01, I needed to change the following from 0.1 to 0.01
+	var increaseVal = (settings.halfZMovements) ? 0.05 : 0.01; //0.1
 	increaseChildren.each(function(index) {
 		increaseChildren.eq(index).data("z", increaseVal).contents().first().replaceWith("Z+" + increaseVal + " ");
 		increaseVal *= 10;

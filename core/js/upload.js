@@ -568,8 +568,17 @@ $("#btn_cancel_upload").click(function() {
 });
 
 $(".btn-upload").click(function(e) {
-	if (!$(this).is(".disabled")) {
-		$("#input_file_upload").data("type", $(this).data("type")).click();
+    if (!$(this).is(".disabled")) {
+        var type = $(this).data("type");
+
+        if (type === "gcode" || type === "print") {
+            $("#input_file_upload").data("accept", "." + type)
+        }
+        else {
+            $("#input_file_upload").removeData("accept");
+        }
+        
+        $("#input_file_upload").data("type", type).click();
 	}
 	e.preventDefault();
 });
