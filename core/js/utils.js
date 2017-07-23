@@ -294,12 +294,12 @@ function setToolFilament(tool, filament) {
 
 function updateFixedToolTemps(rows) {
 	settings.defaultActiveTemps.forEach(function(temp) {
-		rows.find(".ul-active-temp").append('<li><a href="#" class="heater-temp" data-temp="' + temp + '">' + T("{0} Â°C", temp) + '</a></li>');
+		rows.find(".ul-active-temp").append('<li><a href="#" class="heater-temp" data-temp="' + temp + '">' + T("{0} °C", temp) + '</a></li>');
 		rows.find(".btn-active-temp").removeClass("disabled");
 	});
 
 	settings.defaultStandbyTemps.forEach(function(temp) {
-		rows.find(".ul-standby-temp").append('<li><a href="#" class="heater-temp" data-temp="' + temp + '">' + T("{0} Â°C", temp) + '</a></li>');
+		rows.find(".ul-standby-temp").append('<li><a href="#" class="heater-temp" data-temp="' + temp + '">' + T("{0} °C", temp) + '</a></li>');
 		rows.find(".btn-standby-temp").removeClass("disabled");
 	});
 
