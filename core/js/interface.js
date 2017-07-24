@@ -148,7 +148,7 @@ function updateGui() {
 					if (lastStatusResponse != undefined) {
 						if (lastStatusResponse.temps.hasOwnProperty("current") && lastStatusResponse.temps.hasOwnProperty("state")) {
 							heaterState = getHeaterStateText(lastStatusResponse.temps.state[heater]);
-							currentTemp = T("{0} °C", lastStatusResponse.temps.current[heater].toFixed(1));
+                            currentTemp = T("{0} °C", lastStatusResponse.temps.current[heater].toFixed(1));
 						} else {
 							if (heater == bedHeater && lastStatusResponse.temps.hasOwnProperty("bed")) {
 								heaterState = getHeaterStateText(lastStatusResponse.temps.bed.state);
@@ -1386,7 +1386,7 @@ function cbHeaterClick(e) {
 
 function addBedTemperature(temperature) {
 	// Drop-Down item
-	$(".ul-bed-temp").append('<li><a href="#" class="bed-temp" data-temp="' + temperature + '">' + T("{0} °C", temperature) + '</a></li>');
+    $(".ul-bed-temp").append('<li><a href="#" class="bed-temp" data-temp="' + temperature + '">' + T("{0} U+02103", temperature) + '</a></li>');
 	$(".btn-bed-temp").removeClass("disabled");
 
 	// Entry on Settings page
@@ -1415,7 +1415,7 @@ function addDefaultGCode(label, gcode) {
 
 function addHeadTemperature(temperature, type) {
 	// Drop-Down item
-	$(".ul-" + type + "-temp").append('<li><a href="#" class="heater-temp" data-temp="' + temperature + '">' + T("{0} °C", temperature) + '</a></li>');
+    $(".ul-" + type + "-temp").append('<li><a href="#" class="heater-temp" data-temp="' + temperature + '">' + T("{0} &#8451;", temperature) + '</a></li>');
 	$(".btn-" + type + "-temp").removeClass("disabled");
 
 	// Entry on Settings page
